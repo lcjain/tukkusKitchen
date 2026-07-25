@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "name": "Tukku's Kitchen",
   "short_name": "Tukku's",
@@ -15,3 +16,22 @@
     }
   ]
 }
+=======
+{
+  "name": "Tukku's Kitchen",
+  "short_name": "Tukku's",
+  "description": "Premium vegetarian restaurant with online ordering, elegant dining, and fresh ingredients.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#FBCF81",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
+>>>>>>> 5b94780936c6c309ad377226c1f4ead7cecae470
