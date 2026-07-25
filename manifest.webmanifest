@@ -1,0 +1,17 @@
+{
+  "name": "Tukku's Kitchen",
+  "short_name": "Tukku's",
+  "description": "Premium vegetarian restaurant with online ordering, elegant dining, and fresh ingredients.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#FBCF81",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
