@@ -64,7 +64,7 @@ export function FeedbackForm() {
             <input
               {...register('phone')}
               className="w-full rounded-[20px] border border-slate-200 bg-slate-50 px-4 py-3 text-base text-text outline-none transition focus:border-secondary focus:ring-2 focus:ring-secondary/20"
-              placeholder="+91 98765 43210"
+              placeholder="+918962249989"
             />
             {errors.phone && <p className="text-sm text-rose-600">{errors.phone.message}</p>}
           </label>

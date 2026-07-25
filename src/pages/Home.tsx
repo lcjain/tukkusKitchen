@@ -1,6 +1,6 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Clock, DollarSign, HeartHandshake, Leaf, Mail, MapPin, MessageSquare, Phone, ShieldCheck, ShoppingCart, Sprout, Truck } from 'lucide-react';
+import { Clock, HeartHandshake, IndianRupee, Leaf, Mail, MapPin, MessageSquare, Phone, ShieldCheck, Sprout, Truck, Utensils } from 'lucide-react';
 import { heroContent } from '@/data/hero';
 import { Button } from '@/components/ui/Button';
 import { SectionHeading } from '@/components/common/SectionHeading';
@@ -33,7 +33,7 @@ const features = [
   {
     title: 'Affordable Prices',
     description: 'Premium dining without premium costs—value that feels indulgent.',
-    icon: DollarSign,
+    icon: IndianRupee,
   },
   {
     title: 'Homemade Taste',
@@ -48,8 +48,64 @@ const features = [
 ];
 
 export default function Home() {
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const reorderedGalleryImages = [galleryImages[3], ...galleryImages.slice(1, 3), galleryImages[0]];
+  const carouselImages = [...reorderedGalleryImages, ...reorderedGalleryImages];
+
+  useEffect(() => {
+    const element = carouselRef.current;
+    if (!element) return;
+
+    let animationFrame = 0;
+    const speed = 0.5;
+
+    const step = () => {
+      if (!element) return;
+      element.scrollLeft += speed;
+
+      if (element.scrollLeft >= element.scrollWidth / 2) {
+        element.scrollLeft -= element.scrollWidth / 2;
+      }
+
+      animationFrame = requestAnimationFrame(step);
+    };
+
+    animationFrame = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(animationFrame);
+  }, []);
+
   return (
     <main className="space-y-16" id="home">
+      <section className="space-y-8">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="text-sm uppercase tracking-[0.3em] text-secondary">Featured carousel</p>
+            <h2 className="text-3xl font-semibold text-text sm:text-4xl">Discover our most-loved dishes</h2>
+          </div>
+          <p className="max-w-2xl text-sm leading-6 text-text/70">
+            Swipe through our curated carousel of signature vegetarian plates before diving into the menu.
+          </p>
+        </div>
+
+        <div className="overflow-hidden rounded-[32px] border border-white/80 bg-white/80 shadow-soft">
+          <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto p-4 scroll-smooth scrollbar-thin scrollbar-thumb-secondary/40 scrollbar-track-transparent">
+            {galleryImages.map((image) => (
+              <div key={image.id} className="min-w-[280px] snap-start overflow-hidden rounded-[28px] bg-slate-50 shadow-soft">
+                <OptimizedImage
+                  src={image.src}
+                  alt={image.alt}
+                  sizes="(max-width: 768px) 100vw, 280px"
+                  className="h-60 w-full object-cover"
+                />
+                <div className="p-4">
+                  <p className="text-sm font-semibold text-text">{image.alt}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="relative overflow-hidden rounded-[32px] border border-white/80 bg-white/80 p-6 shadow-soft backdrop-blur-xl sm:p-10">
         <div className="absolute left-0 top-1/2 h-80 w-80 -translate-y-1/2 rounded-full bg-primary/10 blur-3xl" />
         <div className="absolute right-0 top-16 h-60 w-60 rounded-full bg-secondary/15 blur-3xl" />
@@ -119,7 +175,7 @@ export default function Home() {
                 src="/pic1.jpeg"
                 alt="Fresh vegetarian meal"
                 sizes="(max-width: 768px) 100vw, 50vw"
-                className="h-full min-h-[420px] w-full rounded-[32px] shadow-2xl shadow-slate-900/10"
+                className="h-[520px] w-full rounded-[32px] object-cover"
               />
               <div className="absolute left-6 top-6 rounded-[24px] border border-white/70 bg-white/90 p-4 shadow-sm backdrop-blur-xl">
                 <p className="text-xs uppercase tracking-[0.3em] text-secondary">Fresh Pick</p>
@@ -213,9 +269,9 @@ export default function Home() {
             className="group block overflow-hidden rounded-[32px] border border-white/80 bg-white/90 p-8 text-center shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-lg"
           >
             <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-secondary/10 text-secondary shadow-soft transition duration-300 group-hover:bg-secondary/20">
-              <ShoppingCart className="h-10 w-10" />
+              <Utensils className="h-10 w-10" />
             </div>
-            <p className="text-3xl font-semibold text-text">Order Online</p>
+            <p className="text-3xl font-semibold text-text">Order Food</p>
             <p className="mt-3 text-sm leading-6 text-text/70">Browse the menu and place your order quickly through our online store.</p>
           </a>
 
@@ -234,9 +290,9 @@ export default function Home() {
 
           <a
             href="tel:+918962249989"
-            className="group block overflow-hidden rounded-[32px] border border-white/80 bg-white/90 p-8 text-center shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+            className="group block overflow-hidden rounded-[32px] border border-primary/20 bg-primary/10 p-8 text-center shadow-soft transition duration-300 hover:-translate-y-1 hover:bg-primary/15 hover:shadow-lg"
           >
-            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-secondary/10 text-secondary shadow-soft transition duration-300 group-hover:bg-secondary/20">
+            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-primary/20 text-primary shadow-soft transition duration-300 group-hover:bg-primary/30">
               <Phone className="h-10 w-10" />
             </div>
             <p className="text-3xl font-semibold text-text">Call Now</p>
@@ -263,7 +319,7 @@ export default function Home() {
                   <p className="text-sm uppercase tracking-[0.35em]">Address</p>
                 </div>
                 <p className="mt-4 text-base leading-7 text-text/75">
-                  12 Tukku Street, Greenway District, Bangalore, Karnataka 560001
+                  Tukku's Kitchen, Near Sakshi Hotel, Katni Road, Maihar, Maihar, Madhya Pradesh, India, 485771
                 </p>
               </div>
 
@@ -272,7 +328,7 @@ export default function Home() {
                   <Phone className="h-6 w-6" />
                   <p className="text-sm uppercase tracking-[0.35em]">Phone</p>
                 </div>
-                <p className="mt-4 text-base leading-7 text-text/75">+91 98765 43210</p>
+                <p className="mt-4 text-base leading-7 text-text/75">+918962249989</p>
               </div>
 
               <div className="rounded-[28px] bg-slate-50 p-6 shadow-glass">
@@ -289,14 +345,14 @@ export default function Home() {
                   <p className="text-sm uppercase tracking-[0.35em]">Opening Hours</p>
                 </div>
                 <p className="mt-4 text-base leading-7 text-text/75">
-                  Mon - Sun: 11:00 AM to 11:00 PM
+                  Mon - Sun: 10:00 AM to 10:00 PM
                 </p>
               </div>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-3">
               <a
-                href="https://www.google.com/maps/dir/?api=1&destination=12+Tukku+Street+Bangalore"
+                href="https://maps.app.goo.gl/FfMifNTsxxh5xWrh6"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center justify-center rounded-[20px] border border-slate-200 bg-slate-50 px-4 py-4 text-sm font-semibold text-text transition duration-300 hover:border-secondary hover:bg-secondary/10 hover:text-secondary"
@@ -324,9 +380,12 @@ export default function Home() {
             <div className="aspect-[16/11] overflow-hidden rounded-[28px] bg-slate-200">
               <iframe
                 title="Tukku's Kitchen location"
-                src="https://maps.google.com/maps?q=12%20Tukku%20Street%20Bangalore&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3831.905268104051!2d80.75007514550579!3d24.249153874304078!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39838bd973f7276f%3A0x3c0cf93e4cce71b7!2sTukku's%20Kitchen!5e0!3m2!1sen!2sin!4v1784979365403!5m2!1sen!2sin"
                 className="h-full w-full"
+                style={{ border: 0 }}
+                allowFullScreen
                 loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
               />
             </div>
             <div className="mt-5 rounded-[28px] bg-white p-5 shadow-glass">

@@ -29,7 +29,7 @@ function FooterComponent() {
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="rounded-[28px] bg-white/5 p-5 shadow-glass backdrop-blur-xl">
               <p className="text-sm uppercase tracking-[0.35em] text-secondary">Address</p>
-              <p className="mt-3 text-sm leading-7 text-slate-300">12 Tukku Street, Greenway District, Bangalore, Karnataka 560001</p>
+              <p className="mt-3 text-sm leading-7 text-slate-300">Tukku's Kitchen, Near Sakshi Hotel, Katni Road, Maihar, Maihar, Madhya Pradesh, India, 485771</p>
             </div>
             <div className="rounded-[28px] bg-white/5 p-5 shadow-glass backdrop-blur-xl">
               <p className="text-sm uppercase tracking-[0.35em] text-secondary">Contact</p>

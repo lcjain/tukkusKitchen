@@ -7,10 +7,10 @@ export const siteConfig = {
   whatsapp: 'https://wa.me/918962249989',
   email: 'tukkuskitchen@gmail.com',
   address: {
-    streetAddress: 'Near Katni-Rewa Highway, Katni Road Maihar',
+    streetAddress: "Tukku's Kitchen, Near Sakshi Hotel, Katni Road, Maihar, Maihar, Madhya Pradesh, India, 485771",
     addressLocality: 'Maihar',
     addressRegion: 'Madhya Pradesh',
-    postalCode: '484446',
+    postalCode: '485771',
     addressCountry: 'India',
   },
   priceRange: '$$',

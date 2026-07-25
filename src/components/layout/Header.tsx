@@ -83,6 +83,9 @@ export function Header() {
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
+      <div className="border-t border-white/80 bg-gradient-to-r from-[#FDF3E7] via-[#FFF9F0] to-[#FDE8C0] px-4 py-3 text-center text-sm font-semibold text-slate-900 shadow-soft sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-6xl">Tukku's Kitchen — Authentic Pure Vegetarian Dining</div>
+      </div>
 
       <AnimatePresence>
         {open ? (
