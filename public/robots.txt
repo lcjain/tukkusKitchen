@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow:
+
+Host: https://tukkuskitchen.com
+Sitemap: https://tukkuskitchen.com/sitemap.xml
+
+# Allow large image previews for search engines
+Max-image-preview: large

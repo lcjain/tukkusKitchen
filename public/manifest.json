@@ -1,0 +1,18 @@
+{
+  "name": "Tukku's Kitchen",
+  "short_name": "Tukku's",
+  "description": "Premium Pure Vegetarian & Jain restaurant in Maihar with family dining, takeaway, and online ordering.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFDF8",
+  "theme_color": "#2E7D32",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
